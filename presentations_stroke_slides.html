@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腦中風與復健照護防範｜簡報</title>
+  <style>
+    :root {
+      --primary: #386A8B;
+      --primary-dark: #244860;
+      --primary-light: #E7F1F7;
+      --bg: #F8FAFC;
+      --text: #2D3748;
+      --muted: #64748B;
+      --border: #CBD5E1;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background-color: #1E293B;
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .deck-container {
+      width: 100vw;
+      height: 100vh;
+      max-width: 1280px;
+      max-height: 720px;
+      background: var(--bg);
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 48px 64px;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 封面頁樣式 */
+    .slide-cover {
+      background: linear-gradient(135deg, #386A8B 0%, #5286A8 100%);
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      color: var(--white);
+    }
+
+    .slide-cover .badge {
+      background: #244860;
+      color: var(--white);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .slide-cover h1 {
+      font-size: 3.2rem;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .slide-cover p {
+      font-size: 1.35rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 780px;
+      line-height: 1.7;
+    }
+
+    /* 內頁標頭 */
+    .slide-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .slide-header h2 {
+      font-size: 2rem;
+      color: var(--primary-dark);
+    }
+
+    .slide-header .tag {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* 內容排版元件 */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(56, 106, 139, 0.06);
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p, .card li {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    ul.clean-list {
+      padding-left: 1.3rem;
+    }
+
+    ul.clean-list li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-box {
+      background: var(--primary-light);
+      border-left: 5px solid var(--primary);
+      padding: 18px 24px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--primary-dark);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 24px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 1.0rem;
+      color: var(--muted);
+    }
+
+    /* 表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      text-align: left;
+      font-size: 1.0rem;
+      line-height: 1.6;
+    }
+
+    th {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    /* 頁尾控制列 */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 28px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .controls button {
+      background: var(--primary-dark);
+      color: var(--white);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .controls button:hover {
+      background: var(--primary);
+    }
+
+    @media print {
+      body { background: white; overflow: visible; height: auto; }
+      .deck-container { max-width: none; max-height: none; box-shadow: none; height: auto; }
+      .slide { display: flex !important; page-break-after: always; height: 100vh; }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container">
+    <!-- 第 1 頁：封面 -->
+    <section class="slide slide-cover active">
+      <div class="badge">醫療品質與健康衛教簡報</div>
+      <h1>認識腦中風急症與復健照護</h1>
+      <p>掌握 FAST 辨別口訣、把握黃金 3 小時搶救時間、認識中風類型與長期復健要點，守護健康生活。</p>
+    </section>
+
+    <!-- 第 2 頁：死因統計與急症特性 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>一、腦中風的威脅與急症特性</h2>
+        <span class="tag">DISEASE OVERVIEW</span>
+      </div>
+      <div class="slide-body">
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-num">第 4 位</div>
+            <div class="stat-label">國人十大死因排序（衛福部 108 年統計）</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">每 43 分鐘</div>
+            <div class="stat-label">平均每 43 分鐘就有 1 人死於腦中風</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">60 - 79 歲</div>
+            <div class="stat-label">發生率最高的高風險年齡層</div>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <strong>急症提醒：</strong>腦中風是一種急症，若未即時接受適當治療，將造成中至重度殘障後遺症，生活無法自理（如吃飯、穿衣、洗澡、走路），對家庭照顧與經濟造成沉重負擔。
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>2 / 6</span>
+      </div>
+    </section>
+
+    <!-- 第 3 頁：FAST 辨別口訣與黃金時間 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>二、FAST 急缺口訣與黃金搶救時間</h2>
+        <span class="tag">EMERGENCY FAST</span>
+      </div>
+      <div class="slide-body">
+        <p style="font-size: 1.1rem; margin-bottom: 4px;">把握<strong>「急性中風搶救黃金 3 小時」</strong>，牢記 FAST 口訣辨識初期重要症狀：</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>F & A (面部與手臂)</h3>
+            <ul class="clean-list">
+              <li><strong>F (FACE)：</strong>請患者微笑或觀察面部表情，兩邊的臉是否對稱。</li>
+              <li><strong>A (ARM)：</strong>請患者將雙手抬高平舉，觀察其中一隻手是否無力而垂下來。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>S & T (語言與時間)</h3>
+            <ul class="clean-list">
+              <li><strong>S (SPEECH)：</strong>請患者讀一句話，觀察是否清晰且完整。</li>
+              <li><strong>T (TIME)：</strong>當上述症狀出現任一項時，明確記下發作時間，<strong>立刻送醫</strong>！</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>3 / 6</span>
+      </div>
+    </section>
+
+    <!-- 第 4 頁：中風類型 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>三、腦中風的主要類型</h2>
+        <span class="tag">STROKE TYPES</span>
+      </div>
+      <div class="slide-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 28%;">中風類型</th>
+              <th>病理機制與說明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>缺血性中風</strong><br>（腦梗塞、腦缺血）</td>
+              <td>因腦血管本身病變造成血管狹窄，或因心臟或其他部位血管內血栓形成栓塞，導致腦組織壞死和功能失調。</td>
+            </tr>
+            <tr>
+              <td><strong>出血性中風</strong><br>（腦出血）</td>
+              <td>因腦血管破裂形成血塊壓迫腦組織，又可細分為<strong>腦內出血</strong>及<strong>蜘蛛膜下出血</strong>兩種。</td>
+            </tr>
+            <tr>
+              <td><strong>暫時性腦缺血發作</strong></td>
+              <td>因暫時腦部缺血引起的中風症狀，一般在 <strong>24 小時內可完全恢復</strong>，不會留下任何後遺症。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>4 / 6</span>
+      </div>
+    </section>
+
+    <!-- 第 5 頁：復健服務與抗血栓藥物 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>四、復健黃金期與藥物預防</h2>
+        <span class="tag">REHAB & TREATMENT</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>復健黃金期（發病後 6 個月內）</h3>
+            <ul class="clean-list">
+              <li><strong>恢復速度：</strong>發病後前 3 個月最明顯。上肢功能良好恢復約 40%；下肢可自行走路者約 85%。</li>
+              <li><strong>心理調適：</strong>復健是長期抗戰，患者意志力與心情調適至關重要，需放鬆心情持續調適。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>處方抗血栓藥物預防復發</h3>
+            <ul class="clean-list">
+              <li><strong>長期治療：</strong>缺血性中風或暫時性腦缺血病人建議使用抗血小板藥物。</li>
+              <li><strong>臨床效益：</strong>嚴重血管疾病發生率相對減少 25%，中風復發相對風險減少 13% 至 15%。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>5 / 6</span>
+      </div>
+    </section>
+
+    <!-- 第 6 頁：降低罹患中風風險 6 大守則 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>五、如何降低罹患中風風險</h2>
+        <span class="tag">PREVENTION & LIFESTYLE</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. 積極控制三高</h3>
+            <p>高血壓、糖尿病及高血脂務必遵照醫囑用藥，並定期回診追蹤。</p>
+          </div>
+          <div class="card">
+            <h3>2. 健康飲食與運動</h3>
+            <p>三餐定時定量，少油、少鹽、少糖多蔬果；每週維持 3-5 次、每次 30 分鐘運動。</p>
+          </div>
+          <div class="card">
+            <h3>3. 體重、菸害與健檢</h3>
+            <p>維持 BMI 18.5~24.9、腰圍正常；拒絕菸害；定期利用國健署免費成人健檢。</p>
+          </div>
+        </div>
+        <div style="font-size: 0.9rem; color: var(--muted); text-align: center; margin-top: 4px;">
+          參考來源：衛生福利部國民健康署、台灣腦中風協會、美國中風協會。本簡報僅供衛教與就醫參考。
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>6 / 6</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevSlide()">← 上一頁</button>
+    <button onclick="nextSlide()">下一頁 →</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>

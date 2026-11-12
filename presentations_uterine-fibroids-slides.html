@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子宮肌瘤手術與治療選擇｜簡報</title>
+  <style>
+    :root {
+      --primary: #D47986;
+      --primary-dark: #A64E5D;
+      --primary-light: #FCE8EC;
+      --bg: #FFF8F9;
+      --text: #423537;
+      --muted: #7A696C;
+      --border: #F0D5DA;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background-color: #2c2425;
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .deck-container {
+      width: 100vw;
+      height: 100vh;
+      max-width: 1280px;
+      max-height: 720px;
+      background: var(--bg);
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 48px 64px;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 封面頁樣式 */
+    .slide-cover {
+      background: linear-gradient(135deg, #FCE8EC 0%, #F4D1D7 100%);
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .slide-cover .badge {
+      background: var(--primary);
+      color: var(--white);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .slide-cover h1 {
+      font-size: 3.2rem;
+      color: var(--primary-dark);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .slide-cover p {
+      font-size: 1.35rem;
+      color: #5C4A4D;
+      max-width: 780px;
+      line-height: 1.7;
+    }
+
+    /* 內頁標頭 */
+    .slide-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .slide-header h2 {
+      font-size: 2rem;
+      color: var(--primary-dark);
+    }
+
+    .slide-header .tag {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* 內容排版元件 */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(166, 78, 93, 0.06);
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p, .card li {
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    ul.clean-list {
+      padding-left: 1.3rem;
+    }
+
+    ul.clean-list li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-box {
+      background: var(--primary-light);
+      border-left: 5px solid var(--primary);
+      padding: 18px 24px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #4A3538;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 24px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    /* 表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      text-align: left;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    th {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    /* 頁尾控制列 */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 28px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .controls button {
+      background: var(--primary-dark);
+      color: var(--white);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .controls button:hover {
+      background: var(--primary);
+    }
+
+    @media print {
+      body { background: white; overflow: visible; height: auto; }
+      .deck-container { max-width: none; max-height: none; box-shadow: none; height: auto; }
+      .slide { display: flex !important; page-break-after: always; height: 100vh; }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container">
+    <!-- 第 1 頁：封面 -->
+    <section class="slide slide-cover active">
+      <div class="badge">醫療品質與健康衛教簡報</div>
+      <h1>認識子宮肌瘤手術與治療選擇</h1>
+      <p>從盛行率、常見症狀、醫療品質評估指標到手術前 5 步驟，協助女性與醫療團隊共同做出最適合的健康決策。</p>
+    </section>
+
+    <!-- 第 2 頁：認識子宮肌瘤 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>一、認識子宮肌瘤：盛行率與特性</h2>
+        <span class="tag">DISEASE OVERVIEW</span>
+      </div>
+      <div class="slide-body">
+        <div class="stat-row">
+          <div class="stat-card">
+            <div class="stat-num">約 1/4 (25%)</div>
+            <div class="stat-label">臨床上發現有子宮肌瘤的女性比例</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">約 20%</div>
+            <div class="stat-label">35 歲以上婦女患有子宮肌瘤之比例</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">0.2% (2/1000)</div>
+            <div class="stat-label">病理檢查中可能伴隨癌症病變之機率</div>
+          </div>
+        </div>
+        <div class="highlight-box">
+          <strong>核心觀念：</strong>子宮肌瘤是婦科最常見的良性腫瘤，絕大多數不會威脅生命，轉變為惡性者極為罕見；但因病理檢查仍有千分之二可能伴隨癌症病變，因此定期追蹤與審慎評估依然不可或缺。
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>2 / 7</span>
+      </div>
+    </section>
+
+    <!-- 第 3 頁：常見症狀 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>二、子宮肌瘤的常見症狀表現</h2>
+        <span class="tag">SYMPTOMS</span>
+      </div>
+      <div class="slide-body">
+        <p style="font-size: 1.15rem;">多數子宮肌瘤並無明顯症狀；若有症狀，雖不會致命，但會嚴重影響日常生活品質：</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>月經與疼痛相關</h3>
+            <ul class="clean-list">
+              <li><strong>經血過量：</strong>月經量過多或不正常出血，長期可能導致貧血。</li>
+              <li><strong>疼痛不適：</strong>經痛、下腹部疼痛或下背痛。</li>
+              <li><strong>性交疼痛：</strong>影響親密關係與生活品質。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>壓迫與生殖相關</h3>
+            <ul class="clean-list">
+              <li><strong>器官壓迫感：</strong>下腹脹、壓迫膀胱引起頻尿，或壓迫腸道造成不適。</li>
+              <li><strong>生殖與受孕問題：</strong>可能影響受孕，造成不孕等生殖困擾。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>3 / 7</span>
+      </div>
+    </section>
+
+    <!-- 第 4 頁：觀察與手術評估指標 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>三、醫療品質與臨床處置評估標準</h2>
+        <span class="tag">QUALITY & INDICATIONS</span>
+      </div>
+      <div class="slide-body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 26%;">評估階段</th>
+              <th>臨床處置與品質參考原則</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>無症狀定期追蹤</strong></td>
+              <td>無症狀且腫瘤不大的患者，建議<strong>每 3 個月至半年</strong>進行一次超音波追蹤；接近停經期者若無變化，更年期後會因缺乏荷爾蒙而自行萎縮。</td>
+            </tr>
+            <tr>
+              <td><strong>考慮手術治療時機</strong></td>
+              <td>肌瘤<strong>大於 5 公分</strong>，且伴隨不正常出血、月經量過多、貧血、經痛、腸道或膀胱壓迫感、不孕症；或腫瘤快速長大有惡性變化疑慮時。</td>
+            </tr>
+            <tr>
+              <td><strong>手術品質監測意義</strong></td>
+              <td>因症狀影響生活品質且術式選擇多元，子宮肌瘤手術為監測婦科醫療品質的重要指標手術。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>4 / 7</span>
+      </div>
+    </section>
+
+    <!-- 第 5 頁：常見治療方式比較 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>四、一般子宮肌瘤常見治療方式</h2>
+        <span class="tag">TREATMENT OPTIONS</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <h3>1. 藥物治療</h3>
+            <p>使用荷爾蒙調節等藥物，使肌瘤縮小或改善出血與疼痛症狀，常作為症狀緩解或接近停經期前的過渡方案。</p>
+          </div>
+          <div class="card">
+            <h3>2. 手術治療（保留/切除）</h3>
+            <ul class="clean-list">
+              <li><strong>子宮肌瘤摘除術：</strong>保留子宮（經腹部、子宮鏡、腹腔鏡或機器人手臂）。</li>
+              <li><strong>子宮切除術：</strong>全切除或次全切除（經腹部 ATH、陰道 VTH、腹腔鏡或機器人手臂）。</li>
+              <li><strong>子宮動脈栓塞術</strong></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>3. 其他治療</h3>
+            <p>例如<strong>高強度聚焦超音波治療術（HIFU，俗稱海扶刀）</strong>等微創或無創技術，需由專科醫師依肌瘤位置與大小評估適用性。</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>5 / 7</span>
+      </div>
+    </section>
+
+    <!-- 第 6 頁：術後常見疑問澄清 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>五、子宮切除術後的常見疑問釐清</h2>
+        <span class="tag">POST-OP Q&A</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>會提早更年期或男性化嗎？</h3>
+            <p><strong>不會。</strong>女性荷爾蒙主要由卵巢分泌。若單純切除子宮而保留卵巢，不會改變內分泌，不會長鬍鬚、不會男性化，也不需額外補充荷爾蒙（僅無月經與無法懷孕）。</p>
+          </div>
+          <div class="card">
+            <h3>對性生活與子宮頸有影響嗎？</h3>
+            <ul class="clean-list">
+              <li><strong>性生活調查：</strong>台灣調查顯示 57% 婦女術後性生活無改變、19% 認為有改善（因解除病痛且無懷孕顧慮）。</li>
+              <li><strong>保留子宮頸（次全切除）：</strong>術後每年仍須定期做<strong>子宮頸抹片檢查</strong>。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>6 / 7</span>
+      </div>
+    </section>
+
+    <!-- 第 7 頁：決定手術前 5 步驟與風險提醒 -->
+    <section class="slide">
+      <div class="slide-header">
+        <h2>六、決定手術前你該做的 5 個步驟</h2>
+        <span class="tag">DECISION CHECKLIST</span>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>術前自我檢核 5 步驟</h3>
+            <ol style="padding-left: 1.4rem; line-height: 1.85; font-size: 1.05rem;">
+              <li>充分了解自己的病況。</li>
+              <li>確定沒有其他更好或更適合的保守治療方法。</li>
+              <li>了解拿掉子宮之後，生活可能會有哪些變化。</li>
+              <li>知道哪些情況不需手術、哪些情況手術是最佳選擇。</li>
+              <li>和醫師討論過所有可能的治療選擇。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>風險衡量與權威參考</h3>
+            <p style="margin-bottom: 10px;"><strong>手術潛在風險：</strong>血栓性靜脈炎、嚴重感染、術後出血、腸阻塞、輸尿管受傷及麻醉相關風險，需由醫師個別評估。</p>
+            <p><strong>官方醫學會參考：</strong>台灣婦產科醫學會（taog.org.tw）、美國婦產科醫學會 ACOG（acog.org）。</p>
+          </div>
+        </div>
+        <div style="font-size: 0.9rem; color: var(--muted); text-align: center;">
+          本簡報資訊僅供就醫與衛教參考，實際診療與手術決策請依各大醫療院所與專科醫師評估為準。
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>全民健康醫療資訊與品質公開網</span>
+        <span>7 / 7</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevSlide()">← 上一頁</button>
+    <button onclick="nextSlide()">下一頁 →</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>

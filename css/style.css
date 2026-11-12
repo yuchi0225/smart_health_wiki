@@ -1,0 +1,433 @@
+:root {
+  --primary: #d96b3b;
+  --primary-dark: #a94a25;
+  --primary-light: #fff0e8;
+  --text: #30343b;
+  --muted: #69717c;
+  --border: #e8e4e1;
+  --background: #fffaf7;
+  --white: #ffffff;
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(68, 42, 28, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--background);
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  width: min(1100px, calc(100% - 40px));
+  min-height: 76px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  color: var(--primary-dark);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--primary-dark);
+  background: var(--primary-light);
+}
+
+.hero {
+  padding: 72px 0;
+  color: #fff;
+  background: linear-gradient(120deg, #b94f2a, #e98a58);
+}
+
+.hero h1,
+.disease-hero h1 {
+  margin: 8px 0 14px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.3;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hero .eyebrow,
+.disease-hero .eyebrow {
+  color: #ffe4d5;
+}
+
+.section {
+  padding-top: 56px;
+  padding-bottom: 64px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin: 4px 0 0;
+  font-size: 1.8rem;
+}
+
+.section-description {
+  margin: 0;
+  color: var(--muted);
+}
+
+.disease-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.disease-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.disease-card:hover {
+  transform: translateY(-4px);
+  border-color: #e7a17e;
+}
+
+.disease-icon {
+  display: grid;
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--primary-dark);
+  background: var(--primary-light);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.asthma-icon {
+  color: #386a88;
+  background: #eaf5fb;
+}
+
+.disease-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.disease-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.card-link {
+  color: var(--primary-dark);
+  font-weight: 800;
+}
+
+.notice-section {
+  padding: 0 0 56px;
+}
+
+.notice {
+  display: flex;
+  gap: 16px;
+  padding: 22px 24px;
+  border: 1px solid #f0d7c9;
+  border-radius: var(--radius);
+  background: #fff4ed;
+}
+
+.notice-icon {
+  display: grid;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--primary);
+  font-weight: 800;
+}
+
+.notice h2 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.notice p {
+  margin: 0;
+  color: #66554c;
+}
+
+.disease-hero {
+  padding: 48px 0 56px;
+  color: #fff;
+  background: linear-gradient(120deg, #b94f2a, #e98a58);
+}
+
+.asthma-hero {
+  background: linear-gradient(120deg, #326a8b, #6da9c7);
+}
+
+.breadcrumb {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.disease-hero > .container > p:last-child {
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  align-items: start;
+  gap: 42px;
+  padding-top: 44px;
+  padding-bottom: 64px;
+}
+
+.side-nav {
+  position: sticky;
+  top: 24px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.side-nav h2 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.side-nav a {
+  display: block;
+  padding: 8px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.side-nav a:hover {
+  color: var(--primary-dark);
+}
+
+.content-section {
+  margin-bottom: 42px;
+  scroll-margin-top: 24px;
+}
+
+.content-section h2 {
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f1d6c8;
+  font-size: 1.55rem;
+}
+
+.content-section p {
+  margin: 0 0 14px;
+}
+
+.info-card,
+.education-card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.info-card h3,
+.education-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.info-card p,
+.education-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.placeholder-note {
+  display: inline-block;
+  margin-top: 12px;
+  color: #8b6b58;
+  font-size: 0.9rem;
+}
+
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.check-list {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.check-list li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.back-link {
+  padding-top: 8px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.button-secondary {
+  color: var(--primary-dark);
+  border: 1px solid #e5b49c;
+  background: var(--white);
+}
+
+.button-secondary:hover {
+  background: var(--primary-light);
+}
+
+.site-footer {
+  padding: 22px 0;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+.footer-inner a {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .logo {
+    font-size: 0.95rem;
+  }
+
+  .hero {
+    padding: 52px 0;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-description {
+    margin-top: 8px;
+  }
+
+  .disease-grid,
+  .education-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .disease-card {
+    padding: 22px;
+  }
+
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 28px;
+  }
+
+  .side-nav {
+    position: static;
+  }
+
+  .side-nav a {
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
